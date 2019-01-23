@@ -15,9 +15,9 @@ import { AppComponent } from './app.component';
   ],
   entryComponents: [],
   imports: [
-      BrowserModule, 
-      IonicModule.forRoot(), 
-      AppRoutingModule
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [
     StatusBar,
@@ -26,4 +26,4 @@ import { AppComponent } from './app.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
