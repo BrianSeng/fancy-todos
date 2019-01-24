@@ -14,14 +14,21 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        outlet: 'home',
-        component: HomePage
+        children: [
+          {
+            path: '',
+            loadChildren: '../home/home.module#HomePageModule'
+          }
+        ]
       },
       {
         path: 'list',
-        outlet: 'list',
-        component: ListPage,
-        canActivate: [AuthGuardService]
+        children: [
+          {
+            path: 'list',
+            loadChildren: '../list/list.module#ListModule'
+          }
+        ]
       },
       // {
       //   path: 'contact',
@@ -32,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/(home:home)',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
 ];
