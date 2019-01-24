@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, Events } from '@ionic/angular';
-// import { ListItemModal } from './list.item.modal';
+import { ListItemModal } from './list.item.modal';
 import { ToDoItem, ToDoList } from '../../classes/item.class';
 
 @Component({
@@ -36,34 +36,34 @@ export class ListPage implements OnInit {
     this.getItems();
   }
 
-//   async modify(item, i) {
-//     let props = {
-//       itemList: this.itemList,
-//       /*
-//         We pass in an item parameter only when the user clicks on an existing item
-//         and therefore populate an editItem value so that our modal knows this is an edit operation.
-//       */
-//       editItem: item || undefined
-//     };
+  async modify(item, i) {
+    const props = {
+      itemList: this.itemList,
+      /*
+        We pass in an item parameter only when the user clicks on an existing item
+        and therefore populate an editItem value so that our modal knows this is an edit operation.
+      */
+      editItem: item || undefined
+    };
 
-//     // Create the modal
-//     this.modal = await this.modalController.create({
-//       component: ListItemModal,
-//       componentProps: props
-//     });
-//     // Listen for the modal to be closed...
-//     this.modal.onDidDismiss((result) => {
-//       if (result.data.newItem){
-//         // ...and add a new item if modal passes back newItem
-//         result.data.itemList.items.push(result.data.newItem)
-//       } else if (result.data.editItem){
-//         // ...or splice the items array if the modal passes back editItem
-//         result.data.itemList.items[i] = result.data.editItem
-//       }
-//       this.save(result.data.itemList);
-//     })
-//     return this.modal.present()
-//   }
+    // Create the modal
+    this.modal = await this.modalController.create({
+      component: ListItemModal,
+      componentProps: props
+    });
+    // Listen for the modal to be closed...
+    this.modal.onDidDismiss((result) => {
+      if (result.data.newItem) {
+        // ...and add a new item if modal passes back newItem
+        result.data.itemList.items.push(result.data.newItem);
+      } else if (result.data.editItem) {
+        // ...or splice the items array if the modal passes back editItem
+        result.data.itemList.items[i] = result.data.editItem;
+      }
+      this.save(result.data.itemList);
+    });
+    return this.modal.present();
+  }
 
   delete(i) {
     this.itemList.items.splice(i, 1);

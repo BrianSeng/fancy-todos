@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 // Importing your components
 import { ListPage } from './list.page';
-// import { ListItemModal } from './list.item.modal';
+import { ListItemModal } from './list.item.modal';
 
 @NgModule({
   imports: [
@@ -13,14 +13,14 @@ import { ListPage } from './list.page';
     FormsModule
   ],
   declarations: [
-   // Importing your components
+    // Importing your components
     ListPage,
-    // ListItemModal
+    ListItemModal
   ],
   entryComponents: [
     ListPage,
-    // ListItemModal
+    ListItemModal
   ],
   providers: []
 })
-export class ListModule {}
+export class ListModule { }
